@@ -16,3 +16,25 @@ describe('Swiper Gallery Test', function () {
     cy.get('.swiper-slide-active').should('contain', 'Paris');
   });
 });
+
+describe('Swiper Gallery Test', function () {
+  it('Allows user to navigate slides using next and previous buttons', function () {
+    cy.visit('http://localhost:3000');
+
+    cy.get('.swiper-slide-active')
+        .invoke('text')
+        .should('include', 'Rome');
+
+    cy.get('.swiper-button-next').click();
+    cy.wait(1000);
+    cy.get('.swiper-slide-active')
+        .invoke('text')
+        .should('include', 'London');
+
+    cy.get('.swiper-button-prev').click();
+    cy.wait(1000);
+    cy.get('.swiper-slide-active')
+        .invoke('text')
+        .should('include', 'Rome');
+  });
+});
